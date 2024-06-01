@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import useGetTracks from "@/hooks/useGetTracks"
 import useGetRecom from "@/hooks/useGetRecom"
+import useGetArtist from "@/hooks/useGetArtist"
 import { useSession } from "next-auth/react";
 
 export default function TopTracks() {
   const { tracks } = useGetTracks()
   const { data: session } = useSession();
   const [selectedTrack, setSelectedTrack] = useState(null);
-  const { recommendations } = useGetRecom(selectedTrack, session);
+  const [artistId, setArtistId] = useState(null);
+  const {artist} = useGetArtist(artistId, session);
+  const { recommendations } = useGetRecom(selectedTrack, artist.genres, session);
 
   return (
     <div>
@@ -20,7 +23,7 @@ export default function TopTracks() {
               <li key={rec.id}>{rec.name} by {rec.artists[0].name}</li>
             ))}
           </ul>
-          <button onClick={() => setSelectedTrack(null)}>Back to all tracks</button>
+          <button onClick={() => { setSelectedTrack(null); setArtistId(null)}}>Back to all tracks</button>
         </div>
       ) : (
         <div>
@@ -28,7 +31,10 @@ export default function TopTracks() {
           <ul>
             {tracks.map((track) => (
               <li key={track.id}>
-                <button onClick={() => setSelectedTrack(track)}>
+                <button onClick={() => {
+                  setSelectedTrack(track);
+                  setArtistId(track.artists[0].id);
+                }}>
                   {track.name} by {track.artists[0].name}
                 </button>
               </li>
