@@ -35,7 +35,7 @@ export default function TopTracks() {
             {tracks.map((track) => (
               <li key={track.id}>
                 <button onClick={() => {
-                  setSelectedTrack(track);
+                  setSelectedTrack(track); 
                   setArtistId(track.artists[0].id);
                   setSongId(track.id);
                 }}>

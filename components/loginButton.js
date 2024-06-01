@@ -6,7 +6,6 @@ export default function LoginButton() {
     return (
       <>
             Signed in as {session.user.name} <br />
-            {session.accessToken}
         <button onClick={() => signOut()}>Sign out</button>
       </>
     )
