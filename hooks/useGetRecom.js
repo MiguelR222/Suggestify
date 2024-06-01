@@ -5,12 +5,12 @@ function encodeGenres(genres) {
   return genres.map(genre => encodeURIComponent(genre.trim())).join('%2C');
 }
 
-export default function GetRecom(track, genre, session) {
+export default function GetRecom(track, genre, song, session) {
   const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
     const fetchRecom = async () => {
-      if (!track || !genre || !session?.accessToken) {
+      if (!track || !song || !genre || !session?.accessToken) {
         setRecommendations([]); 
         return;
       }
@@ -19,7 +19,7 @@ export default function GetRecom(track, genre, session) {
       const options = {
         method: "GET",
         url: `https://api.spotify.com/v1/recommendations?limit=10&seed_artists=${track.artists[0].id}&seed_genres=${genreQuery}
-        &seed_tracks=${track.id}&min_tempo=${track.tempo - 10}&max_tempo=${track.tempo + 10}`,
+        &seed_tracks=${track.id}&min_tempo=${song.tempo - 5}&max_tempo=${song.tempo + 5}`,
         headers: {
           Authorization: `Bearer ${session.accessToken}`
         },
@@ -36,7 +36,7 @@ export default function GetRecom(track, genre, session) {
     };
 
     fetchRecom();
-  }, [track, genre, session?.accessToken]);
+  }, [track, genre, song, session?.accessToken]);
 
   return { recommendations };
 }
