@@ -6,12 +6,12 @@ function encodeGenres(genres) {
 }
 
 export default function GetRecom(track, genre, song, session) {
-  const [recommendations, setRecommendations] = useState([]);
+  const [recommendations, setRecommendations] = useState(null);
 
   useEffect(() => {
     const fetchRecom = async () => {
       if (!track || !song || !genre || !session?.accessToken) {
-        setRecommendations([]); 
+        setRecommendations(null); 
         return;
       }
       
@@ -27,11 +27,11 @@ export default function GetRecom(track, genre, song, session) {
 
       try {
         const response = await axios.request(options);
-        console.log(axios.request(options));
+        console.log(response.data.tracks);
         setRecommendations(response.data.tracks); 
       } catch (error) {
         console.error("Failed to fetch recommendations:", error);
-        setRecommendations([]);
+        setRecommendations(null);
       }
     };
 
