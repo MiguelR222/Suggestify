@@ -4,6 +4,7 @@ import useGetArtist from "@/hooks/useGetArtist"
 import useGetSong from "@/hooks/useGetSong"
 import useGetRecom from "@/hooks/useGetRecom"
 import { useSession } from "next-auth/react";
+import ToggleBox from '@/components/toggleBox';
 
 export default function SearchTrack() {
   const [artist, setArtist] = useState('');
@@ -31,6 +32,9 @@ export default function SearchTrack() {
             ))}
           </ul>
           <button onClick={() => { setSelectedTrack(null); setArtistId(null); setSongId(null); }}>Back to all tracks</button>
+          <br />
+          <ToggleBox/>
+
         </div>
       ) : (
         <div>
