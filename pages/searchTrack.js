@@ -33,7 +33,7 @@ export default function SearchTrack() {
           </ul>
           <button onClick={() => { setSelectedTrack(null); setArtistId(null); setSongId(null); }}>Back to all tracks</button>
           <br />
-          <ToggleBox/>
+          <ToggleBox recommendations={recommendations} />
 
         </div>
       ) : (

@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import usePostPlaylist from "@/hooks/usePostPlaylist"
 import { useSession } from "next-auth/react";
+import usePostTracks from '@/hooks/usePostTracks';
 
-export default function ToggleBox() {
+export default function ToggleBox({ recommendations }) {
   const [playlistInput, setPlaylistInput] = useState(null);  
   const [playlistName, setPlaylistName] = useState(null);
   const { data: session } = useSession();
   const {playlist} = usePostPlaylist(playlistName, session);
   const [isVisible, setIsVisible] = useState(false);
+  const { postTracks } = usePostTracks(recommendations, playlist, session);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
