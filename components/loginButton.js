@@ -1,4 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import Link from "next/link"
 
 export default function LoginButton() {
   const { data: session } = useSession()
@@ -29,18 +30,18 @@ export default function LoginButton() {
                   </h1>
         
                   <div className="mt-8 flex flex-wrap justify-center gap-4">
-                    <a
+                    <Link
                       href="/searchTrack"
                       className="block w-full rounded bg-sky-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
                     >
                       Search for Tracks
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/topTracks"
                       className="block w-full rounded bg-sky-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
                     >
                       Go to Top Tracks
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
