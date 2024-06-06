@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function encodeGenres(genres) {
-  return genres.map(genre => encodeURIComponent(genre.trim())).join('%2C');
+  return genres.slice(0, 3).map(genre => encodeURIComponent(genre.replace(/\s/g, ''))).join('%2C');
 }
 
 export default function GetRecom(track, genre, song, session) {
@@ -19,7 +19,7 @@ export default function GetRecom(track, genre, song, session) {
       const options = {
         method: "GET",
         url: `https://api.spotify.com/v1/recommendations?limit=10&seed_artists=${track.artists[0].id}&seed_genres=${genreQuery}
-        &seed_tracks=${track.id}&min_tempo=${song.tempo - 5}&max_tempo=${song.tempo + 5}`,
+        &seed_tracks=${track.id}&min_tempo=${song.tempo - 2.5}&max_tempo=${song.tempo + 2.5}`,
         headers: {
           Authorization: `Bearer ${session.accessToken}`
         },
