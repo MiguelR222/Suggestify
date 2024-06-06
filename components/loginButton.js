@@ -28,11 +28,6 @@ export default function LoginButton() {
                     </strong>
                   </h1>
         
-                  <p className="mt-4 sm:text-xl/relaxed">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-                    illo tenetur fuga ducimus numquam ea!
-                  </p>
-        
                   <div className="mt-8 flex flex-wrap justify-center gap-4">
                     <a
                       href="/searchTrack"
