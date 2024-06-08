@@ -1,8 +1,11 @@
 import NextAuth from "next-auth"
 import SpotifyProvider from "next-auth/providers/spotify";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/libs/mongodb";
 
 export const authOptions = {
     // Configure one or more authentication providers
+    adapter: MongoDBAdapter(clientPromise),
     providers: [
         SpotifyProvider({
             clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -26,11 +29,12 @@ export const authOptions = {
             return token
         },
         async session({ session, token, user }) {
-            // Send properties to the client, like an access_token and user id from a provider.
-            session.accessToken = token.accessToken
-            session.user.id = token.id
-        
-            return session
+            // Check if token is defined and has accessToken property before accessing it
+            if (token && token.accessToken) {
+                session.accessToken = token.accessToken;
+                session.user.id = token.id;
+            }
+            return session;
         }
     }
 }
