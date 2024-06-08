@@ -18,6 +18,7 @@ export const authOptions = {
         })
         // ...add more providers here
     ],
+    
 
     callbacks: {
         async jwt({ token, account, profile }) {
