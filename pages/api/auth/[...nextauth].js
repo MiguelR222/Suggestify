@@ -5,7 +5,7 @@ import clientPromise from "@/libs/mongodb";
 
 export const authOptions = {
     // Configure one or more authentication providers
-    adapter: MongoDBAdapter(clientPromise),
+
     providers: [
         SpotifyProvider({
             clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -18,7 +18,6 @@ export const authOptions = {
         })
         // ...add more providers here
     ],
-    
 
     callbacks: {
         async jwt({ token, account, profile }) {
@@ -31,11 +30,10 @@ export const authOptions = {
         },
         async session({ session, token, user }) {
             // Check if token is defined and has accessToken property before accessing it
-            if (token && token.accessToken) {
-                session.accessToken = token.accessToken;
-                session.user.id = token.id;
-            }
-            return session;
+            session.accessToken = token.accessToken
+            session.user.id = token.id
+
+            return session
         }
     }
 }
