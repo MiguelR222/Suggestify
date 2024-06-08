@@ -17,7 +17,7 @@ export default function TopTracks() {
   const { recommendations } = useGetRecom(selectedTrack, artist.genres, song, session);
 
 return (
-  <section className="bg-[#F2F2F2]">
+  <section className="bg-[#F2F2F2] min-h-screen">
     <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-full lg:items-center">
       <div className="mx-auto max-w-xl text-center">
         <h1 className="text-3xl font-extrabold sm:text-5xl text-[#014017]">Top Tracks</h1>

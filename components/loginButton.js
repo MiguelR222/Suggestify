@@ -6,7 +6,7 @@ export default function LoginButton() {
   if (session) {
     return (
       <>
-        <section className="bg-[#F2F2F2]">
+        <section className="bg-[#F2F2F2] min-h-screen">
           <nav className="flex justify-end items-center p-4">
             <div className="mr-4">
               <p className="font-bold text-[#014017]">{session.user.name}</p>
