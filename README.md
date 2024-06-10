@@ -1,4 +1,4 @@
-#Suggestify
+# Suggestify
 
 This project is created with the purpose of giving the user accurate recommendations based on songs they input.
 
