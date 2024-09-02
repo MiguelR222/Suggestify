@@ -62,8 +62,8 @@ export default function SearchTrack() {
                 </div>
               ) : (
                 <div>
-                  <input id="song" placeholder="Search for a song" onChange={(e) => setSong(e.target.value)} className="px-2 py-1 mb-2 border rounded" />
-                  <input id="artist" placeholder="Search for an artist" onChange={(e) => setArtist(e.target.value)} className="px-2 py-1 mb-2 border rounded" />
+                  <input id="song" placeholder="Search for a song" onChange={(e) => setSong(e.target.value)} className="px-2 py-1 mb-2 border rounded text-black" />
+                  <input id="artist" placeholder="Search for an artist" onChange={(e) => setArtist(e.target.value)} className="px-2 py-1 mb-2 border rounded text-black" />
                   <button onClick={() => { setSongName(song); setArtistName(artist);}} className="mx-auto block rounded bg-[#038C33] px-12 py-3 text-sm font-medium text-[#F2F2F2] shadow hover:bg-[#41BFB3] focus:outline-none focus:ring active:bg-[#41BFB3] sm:w-auto transition transform hover:scale-105 hover:rotate-3">
                     Search
                   </button>

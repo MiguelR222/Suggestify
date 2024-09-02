@@ -45,7 +45,7 @@ return (
               &times;
             </button>
             <input
-              id="playlist" placeholder="Enter playlist name" className="px-2 py-1 mb-2 border rounded" onChange={(e) => setPlaylistInput(e.target.value)}
+              id="playlist" placeholder="Enter playlist name" className="px-2 py-1 mb-2 border rounded text-black" onChange={(e) => setPlaylistInput(e.target.value)}
             />
             <button
               className="px-12 py-3 bg-[#014017] text-[#F2F2F2] rounded shadow hover:bg-[#41BFB3] text-sm font-medium focus:outline-none focus:ring active:bg-[#41BFB3] sm:w-auto transition transform hover:scale-105 hover:rotate-3"
