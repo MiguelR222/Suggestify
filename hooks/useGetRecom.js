@@ -27,7 +27,6 @@ export default function GetRecom(track, genre, song, session) {
 
       try {
         const response = await axios.request(options);
-        console.log(response.data.tracks);
         setRecommendations(response.data.tracks); 
       } catch (error) {
         console.error("Failed to fetch recommendations:", error);

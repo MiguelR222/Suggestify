@@ -9,7 +9,7 @@ export default function TopRecom() {
         <ul>
           {tracks.map((track) => (
             <li key={track.id}>
-              <button onClick={() => console.log(track)}>{track.name} by {track.artists[0].name}</button>
+              <button >{track.name} by {track.artists[0].name}</button>
             </li>
           ))}
         </ul>

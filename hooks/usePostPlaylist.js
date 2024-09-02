@@ -26,10 +26,9 @@ export default function usePostPlaylist(playlistName, session) {
 
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         setPlaylist(response.data);
       } catch (error) {
-        console.error("Failed to create playlist:", error);
+        alert("Failed to create playlist:", error);
         setPlaylist(null);
       }
     };
@@ -37,9 +36,6 @@ export default function usePostPlaylist(playlistName, session) {
     createPlaylist();
   }, [playlistName, session?.accessToken]);
 
-  useEffect(() => {
-    console.log(playlist);
-  }, [playlist]);
 
   return { playlist };
 }

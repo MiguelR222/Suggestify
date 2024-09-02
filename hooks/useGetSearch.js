@@ -26,9 +26,7 @@ export default function useGetSearch(track, artist, session) {
           
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         setSearch(response.data.tracks)
-        console.log(search); 
       } catch (error) {
         console.error("Failed to fetch recommendations:", error);
         setSearch(null);
@@ -38,9 +36,6 @@ export default function useGetSearch(track, artist, session) {
     fetchSearch();
   }, [track, artist, session?.accessToken]);
 
-  useEffect(() => {
-    console.log(search);
-  }, [search]);
 
 
   return { search };

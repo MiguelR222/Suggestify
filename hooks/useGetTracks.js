@@ -8,13 +8,13 @@ export default function GetTracks() {
 
   const fetchTracks = async () => {
     if (status !== "authenticated") {
-      console.log("Session not authenticated or session data not available.");
+      alert("Session not authenticated or session data not available.");
       return;
     }
 
     const accessToken = session?.accessToken;
     if (!accessToken) {
-      console.error("Access token is not available.");
+      alert("Access token is not available.");
       return;
     }
 
@@ -28,10 +28,9 @@ export default function GetTracks() {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
       setTracks(response.data.items); // Assuming the data you need is in the items array
     } catch (error) {
-      console.error("Failed to fetch tracks:", error);
+      alert("Failed to fetch tracks:", error);
     }
   };
 

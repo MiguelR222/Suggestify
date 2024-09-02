@@ -31,10 +31,9 @@ export default function usePostTracks(recommendations, playlist, session) {
     
         try {
             const response = await axios.request(options);
-            console.log(response.data);
             setPostTracks(response.data);
         } catch (error) {
-            console.error("Failed to post tracks:", error);
+            alert("Failed to post tracks:", error);
             setPostTracks(null);
         }
         };
